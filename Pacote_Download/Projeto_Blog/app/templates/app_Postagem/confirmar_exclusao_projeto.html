@@ -20,7 +20,7 @@
                 <select name="projeto_id" id="projeto" class="form-select" required>
                     <option value="">-- Selecione um projeto --</option>
                     {% for p in projetos %}
-                        <option value="{{ p.id }}">{{ p.titulo }}</option>
+                    <option value="{{ p.id }}">{{ p.titulo }}</option>
                     {% endfor %}
                 </select>
                 <label for="projeto">Escolha o projeto</label>

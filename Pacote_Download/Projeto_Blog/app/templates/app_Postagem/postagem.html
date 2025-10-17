@@ -1,0 +1,35 @@
+{% extends "app_Postagem/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <!-- Detalhes da Postagem -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <h3 class="card-title text-primary">📝 Detalhes da Postagem</h3>
+            <p class="text-muted">
+                <strong>Data:</strong> {{ postagem.data_cadastro|date:"d/m/Y H:i" }}
+            </p>
+            <p class="card-text">{{ postagem.descricao|linebreaks }}</p>
+        </div>
+        <div class="card-footer bg-light">
+            <a href="{% url 'postagens' %}" class="btn btn-secondary btn-sm">← Voltar</a>
+        </div>
+    </div>
+
+    <!-- Projeto Relacionado -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h4 class="card-title text-success">📁 Projeto Relacionado</h4>
+            <p><strong>Título:</strong> {{ projeto.titulo }}</p>
+            <p>{{ projeto.descricao|truncatechars:150 }}</p>
+            <a href="{% url 'projeto' projeto.id %}" class="btn btn-outline-primary btn-sm">
+                Ver detalhes do projeto
+            </a>
+        </div>
+    </div>
+
+    
+
+</div>
+{% endblock content %}

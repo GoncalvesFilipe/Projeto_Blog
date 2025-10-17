@@ -1,0 +1,22 @@
+{% extends "app_Postagem/base.html" %}
+{% block title %}Excluir Postagem{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h3 class="text-danger">⚠️ Confirmar Exclusão</h3>
+    <p>Tem certeza de que deseja excluir a postagem abaixo?</p>
+
+    <div class="card my-4 shadow-sm">
+        <div class="card-body">
+            <p class="fw-bold">{{ postagem.descricao }}</p>
+            <p class="text-muted">Criado em {{ postagem.data_cadastro|date:"d/m/Y H:i" }}</p>
+        </div>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'postagens' %}" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

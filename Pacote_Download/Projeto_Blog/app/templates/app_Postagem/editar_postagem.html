@@ -1,0 +1,34 @@
+{% extends "app_Postagem/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Editar Postagem{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-primary">✏️ Editar Postagem</h2>
+
+    <form method="post" action="{% url 'editar_postagem' postagem.id %}">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="id_titulo" class="form-label">Título:</label>
+            {{ form.titulo|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_descricao" class="form-label">Descrição:</label>
+            {{ form.descricao|add_class:"form-control" }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_projeto" class="form-label">Projeto Relacionado:</label><br>
+            <span class="text-primary fw-semibold">
+                {{ postagem.projeto.titulo }}
+            </span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{% url 'postagens' %}" class="btn btn-secondary">Voltar</a>
+    </form>
+</div>
+{% endblock %}

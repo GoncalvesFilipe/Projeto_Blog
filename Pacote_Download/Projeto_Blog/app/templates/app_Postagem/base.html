@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}Portfólio de Estágio{% endblock title %}
+    <link rel="stylesheet" href="{% static 'app_postagem/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app_postagem/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'app_Postagem/css/projetos.css' %}"> <!-- novo CSS -->
+</head>
+</head>
+
+<body class="d-flex flex-column min-vh-100 {% block body_class %}{% endblock %}">
+    <!-- Navbar fixa no topo -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">Projeto Blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+
+                    <li class="nav-item"><a class="nav-link" href="{% url 'projetos' %}">📂 Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'postagens' %}">📑 Postagens</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sobre' %}">👨‍💻 Sobre mim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contato' %}">📱 Contato</a></li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link active">👤 Olá, {{ user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">🔓 Sair</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">✍️ Registrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">🔑 Entrar</a>
+                    </li>
+                    {% endif %}
+
+
+
+                </ul>
+            </div>
+
+
+
+        </div>
+    </nav>
+
+    <!-- Conteúdo da página -->
+    <main class="flex-fill mt-5 pt-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2025 Meu Portfólio de Estágio. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="{% static 'app_postagem/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'app_postagem/js/validation.js' %}"></script>
+
+</body>
+
+</html>

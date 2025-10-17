@@ -1,0 +1,37 @@
+{% extends "app_Postagem/base.html" %}
+{% load static %}
+
+{% block title %}Novo Projeto{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #e9eff5;">
+    <div class="bg-white rounded-4 shadow p-5 text-center" style="width: 100%; max-width: 450px;">
+
+        <!-- Ícone e título -->
+        <h3 class="fw-bold mb-2 text-uppercase" style="color: #0d6efd;">
+            Adicionar Projeto
+        </h3>
+        <p class="text-muted mb-4">Preencha os campos abaixo para criar um novo projeto</p>
+
+        <!-- Formulário -->
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-floating mb-3 text-start">
+                <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Título" required>
+                <label for="titulo">Título</label>
+            </div>
+
+            <div class="form-floating mb-4 text-start">
+                <textarea name="descricao" id="descricao" class="form-control" placeholder="Descrição" style="height: 120px;"></textarea>
+                <label for="descricao">Descrição</label>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'projetos' %}" class="btn btn-secondary w-50 me-2 rounded-3 py-2">Voltar</a>
+                <button type="submit" class="btn btn-primary w-50 rounded-3 py-2">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

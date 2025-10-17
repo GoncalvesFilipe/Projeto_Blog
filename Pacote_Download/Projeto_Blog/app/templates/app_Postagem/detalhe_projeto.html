@@ -1,0 +1,17 @@
+{% extends "app_Postagem/base.html" %}  
+
+<div class="container mt-4">
+    <h2>{{ projeto.titulo }}</h2>
+    <p>{{ projeto.descricao }}</p>
+
+    <h4 class="mt-4">Postagens relacionadas</h4>
+    <ul class="list-group">
+        {% for postagem in postagens %}
+            <li class="list-group-item">
+                <strong>{{ postagem.titulo }}</strong> - {{ postagem.data_cadastro|date:"d/m/Y" }}
+            </li>
+        {% empty %}
+            <li class="list-group-item">Nenhuma postagem para este projeto.</li>
+        {% endfor %}
+    </ul>
+</div>

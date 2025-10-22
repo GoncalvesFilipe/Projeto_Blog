@@ -1,0 +1,42 @@
+{% extends "app_Postagem/base.html" %}
+{% load static %}
+
+{% block title %}Nova Postagem{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #e9eff5;">
+    <div class="bg-white rounded-4 shadow p-5 text-center" style="width: 100%; max-width: 500px;">
+
+        <!-- Título e subtítulo -->
+        <h3 class="fw-bold mb-2 text-uppercase" style="color: #0d6efd;">
+            Adicionar Postagem
+        </h3>
+        <p class="text-muted mb-4">
+            Projeto: 
+            <a href="{% url 'projeto' projeto.id %}" class="text-decoration-none fw-semibold text-dark">
+                {{ projeto }}
+            </a>
+        </p>
+
+        <!-- Formulário -->
+        <form action="{% url 'nova_postagem' projeto.id %}" method="POST">
+            {% csrf_token %}
+
+            <div class="form-floating mb-3 text-start">
+                <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Título" required>
+                <label for="titulo">Título</label>
+            </div>
+
+            <div class="form-floating mb-4 text-start">
+                <textarea name="descricao" id="descricao" class="form-control" placeholder="Descrição" style="height: 130px;" required></textarea>
+                <label for="descricao">Descrição</label>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'projeto' projeto.id %}" class="btn btn-secondary w-50 me-2 rounded-3 py-2">Voltar</a>
+                <button type="submit" class="btn btn-primary w-50 rounded-3 py-2">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

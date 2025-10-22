@@ -1,0 +1,70 @@
+{% extends "app_Postagem/base.html" %}
+{% load static %}
+{% block title %}Projetos{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+
+    <!-- Cabeçalho da página -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-uppercase">📂 Projetos</h2>
+        <p class="text-muted">Gerenciamento de projetos.</p>
+    </div>
+
+    {% if projetos %}
+    <div class="row g-4">
+        {% for projeto in projetos %}
+        <div class="col-md-6 col-lg-4">
+            <!-- Card inteiro clicável -->
+            <a href="{% url 'projeto' projeto.id %}" class="text-decoration-none text-dark">
+                <div class="card shadow-sm border-0 h-100 hover-highlight">
+                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                        <h5 class="card-title fw-semibold mb-0">{{ projeto }}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center" role="alert">
+        No momento, não há projetos cadastrados para exibição.
+    </div>
+    {% endif %}
+
+    <!-- Botões de ação -->
+    <div class="text-center mt-5 d-flex justify-content-center gap-3 flex-wrap">
+        <a href="{% url 'novo_projeto' %}" class="btn btn-primary btn-lg shadow-sm action-btn">
+            Adicionar
+        </a>
+
+        {% if projetos %}
+        <a href="{% url 'editar_projeto' %}" class="btn btn-warning btn-lg shadow-sm action-btn">
+            Editar
+        </a>
+
+        <a href="{% url 'confirmar_exclusao_projeto_selecao' %}" class="btn btn-danger btn-lg shadow-sm action-btn">
+            Excluir
+        </a>
+        {% endif %}
+
+        <a href="javascript:history.back()" class="btn btn-secondary btn-lg shadow-sm action-btn">
+            Voltar
+        </a>
+    </div>
+</div>
+
+<!-- CSS -->
+<style>
+    .action-btn {
+        width: 120px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .hover-highlight:hover {
+        transform: translateY(-3px);
+        transition: 0.2s;
+    }
+</style>
+{% endblock content %}

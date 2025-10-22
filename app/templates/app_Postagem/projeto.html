@@ -1,0 +1,105 @@
+{% extends "app_Postagem/base.html" %}
+{% load static %}
+
+{% block title %}{{ projeto }}{% endblock %}
+
+{% block content %}
+
+<div class="container bg-light border-bottom shadow-sm py-4 px-3 text-center" style="z-index: 1030;">
+    <h2 class="fw-bold text-uppercase mb-2">📂 Projeto: {{ projeto }}</h2>
+    <p class="text-muted mb-0 fs-5">{{ projeto.descricao }}</p>
+</div>
+
+<!-- Conteúdo principal -->
+<div class="container mt-5 pt-5 mb-5" style="margin-top: 100px;">
+
+    <!-- Bloco informativo entre o cabeçalho e as postagens -->
+    <div class="text-center my-5">
+        <hr class="mb-3">
+        <h4 class="fw-semibold text-primary">
+            📝 Postagens relacionadas
+        </h4>
+        <p class="text-muted">Visualize ou adicione postagem.</p>
+        <hr class="mt-3">
+    </div>
+
+    <!-- Lista de postagens -->
+    {% if postagens %}
+    <div class="row justify-content-center g-4">
+        {% for postagem in postagens %}
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm border-0 h-100 text-start">
+                <div class="card-body">
+                    <!-- Título da postagem -->
+                    <h5 class="card-title fw-bold text-primary mb-2">
+                        {{ postagem.titulo }}
+                    </h5>
+
+                    <p class="text-muted small mb-2">
+                        <i>{{ postagem.data_cadastro|date:'d M, Y H:i' }}</i>
+                    </p>
+                    <p class="card-text">{{ postagem.descricao|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center mt-3">
+        Não há registros para este projeto.
+    </div>
+    {% endif %}
+
+    <!-- Botões centralizados -->
+    <div class="text-center mt-5 mb-5 d-flex justify-content-center gap-3 flex-wrap">
+        <a href="{% url 'projetos' %}" class="btn btn-secondary btn-lg shadow-sm flex-fill" style="max-width: 220px;">Voltar aos Projetos</a>
+        <a href="{% url 'nova_postagem' projeto.id %}" class="btn btn-primary btn-lg shadow-sm flex-fill" style="max-width: 220px;">Adicionar Postagem
+        </a>
+    </div>
+
+    <!-- Paginação -->
+    {% if postagens.has_other_pages %}
+    <nav aria-label="Page navigation" class="mt-5">
+        <ul class="pagination justify-content-center">
+            {% if postagens.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo; Primeira</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ postagens.previous_page_number }}">Anterior</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link">&laquo; Primeira</a></li>
+            <li class="page-item disabled"><a class="page-link">Anterior</a></li>
+            {% endif %}
+
+            {% for num in postagens.paginator.page_range %}
+            {% if num == postagens.number %}
+            <li class="page-item active">
+                <a class="page-link">{{ num }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+
+            {% if postagens.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ postagens.next_page_number }}">Próxima</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ postagens.paginator.num_pages }}">Última &raquo;</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link">Próxima</a></li>
+            <li class="page-item disabled"><a class="page-link">Última &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends "app_Postagem/base.html" %}
+{% block title %}Detalhe da Postagem{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="text-primary">📝 Detalhes da Postagem</h2>
+
+    <!-- Bloco principal da postagem -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title text-primary">{{ postagem.titulo }}</h4>
+            <p class="card-text mt-2">
+                <h5 class="card-title">Descrição:</h5>{{ postagem.descricao }}
+            </p>
+            <p class="text-muted">
+                Criado em: {{ postagem.data_cadastro|date:"d/m/Y H:i" }}
+            </p>
+            <h5 class="card-title">Projeto Relacionado</h5>
+            <h6 class="card-text text-primary">
+                {{ postagem.projeto.titulo }}
+            </h6>
+        </div>
+    </div>
+    
+    <!-- Botão de voltar -->
+    <a href="{% url 'postagens' %}" class="btn btn-secondary mt-3">Voltar</a>
+</div>
+{% endblock %}

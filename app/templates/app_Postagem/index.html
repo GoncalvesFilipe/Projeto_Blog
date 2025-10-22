@@ -1,0 +1,88 @@
+{% extends "app_Postagem/base.html" %}
+{% load static %}
+
+{% block body_class %}index-page{% endblock %}
+
+{% block content %}
+<main class="container mt-5">
+
+    <!-- Cabeçalho -->
+    <header class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">Portfólio de Estágio</h1>
+        <p class="lead text-muted">
+            Relato da evolução em estudos para construir uma base sólida no estágio de Desenvolvimento de
+            Software com Django, do Curso Técnico em Informática Subsequente - IF Baiano, <i>campus</i> Senhor do Bonfim.
+        </p>
+    </header>
+
+    <!-- Sobre -->
+    <section class="mb-5">
+        <h2 class="h4 fw-semibold mb-3 text-darck">Sobre este portfólio</h2>
+        <p>
+            Este portfólio foi desenvolvido como requisito avaliativo do estágio supervisionado, orientado pelo docente
+            Cleisson Fabrício, com o objetivo de registrar os conhecimentos adquiridos, especialmente nos cursos-base exigidos: <strong>CRUD</strong>,
+            <strong>Desenvolvimento Web com Django</strong> e
+            <strong>Git/GitHub</strong>.
+        </p>
+    </section>
+
+    <!-- Destaques -->
+    <section class="mb-5">
+        <h2 class="h4 fw-semibold mb-4 text-darck">Destaques</h2>
+        <div class="row g-4">
+
+            <!-- Card 1 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Django Framework</h5>
+                        <p class="card-text">Desenvolvimento web com Python, HTML, CSS e JavaScript, incluindo integração com banco de dados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Git e GitHub</h5>
+                        <p class="card-text">Controle de versão, repositórios remotos e colaboração em equipe de forma profissional.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 - Projetos Desenvolvidos -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title fw-bold">Projetos</h5>
+                            <p class="card-text">
+                                Demonstração prática dos conhecimentos adquiridos durante o curso através de projetos reais.
+                            </p>
+                        </div>
+                        <a href="{% url 'projetos' %}" class="btn btn-outline-primary btn-sm mt-3">Ver projetos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 - Postagens Recentes -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title fw-bold">Postagens</h5>
+                            <p class="card-text">
+                                Descrições concretas sobre o processo de aprendizado e desenvolvimento.
+                            </p>
+                        </div>
+                        <a href="{% url 'postagens' %}" class="btn btn-outline-primary btn-sm mt-3">Ver postagens</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+{% endblock content %}

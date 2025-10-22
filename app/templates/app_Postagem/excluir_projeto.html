@@ -1,0 +1,44 @@
+{% extends "app_Postagem/base.html" %}
+{% load static %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100" style="background-color: #f5f5f5;">
+    <div class="bg-white rounded-4 shadow p-5 text-center" style="width: 100%; max-width: 450px;">
+        
+        <!-- Ícone de alerta -->
+        <div class="mb-4">
+            <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 3rem;"></i>
+        </div>
+
+        <!-- Título e mensagem -->
+        <h3 class="fw-bold mb-3 text-uppercase">Confirmar Exclusão</h3>
+        <p class="text-muted mb-4">
+            Tem certeza que deseja excluir o projeto 
+            <span class="fw-semibold">{{ projeto.titulo }}</span>?<br>
+            Esta ação não poderá ser desfeita.
+        </p>
+
+        <!-- Botões -->
+        <div class="d-flex justify-content-between gap-3">
+            <a href="{% url 'projetos' %}" class="btn btn-secondary w-50 rounded-3 py-2">
+                Cancelar
+            </a>
+
+            <form method="POST" class="w-50">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger rounded-3 py-2">
+                    Confirmar Exclusão
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn i {
+        margin-right: 5px;
+    }
+</style>
+{% endblock %}

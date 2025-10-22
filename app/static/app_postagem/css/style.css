@@ -1,0 +1,98 @@
+body {
+    background-color: #dde6ef;    
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* body da página inicial */
+body.index-page {
+    position: relative;
+    min-height: 100vh; /* garante altura mínima da tela */
+    display: flex;
+    flex-direction: column;
+}
+
+/* rodapé */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;  
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+
+main {
+    padding-bottom: 40px; /* espaço para não colar no rodapé */
+}
+
+h2, h3 {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #343a40;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.card {
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.navbar-brand:hover {
+    color: #07daff !important; /* cor dourada */
+    text-shadow: 0px 0px 8px rgba(223, 177, 11, 0.7); /* brilho */
+    transform: scale(1.05); /* levemente maior */
+    transition: all 0.3s ease;
+}
+
+/* Estilo dos cards com hover */
+.hover-highlight {
+    transition: all 0.3s ease;
+}
+
+.hover-highlight:hover {
+    background-color: #0d6efd; /* azul bootstrap */
+}
+
+.hover-highlight:hover a {
+    color: #fff !important; /* texto branco no hover */
+}
+
+/* Botão de adicionar projeto */
+.add-projeto-btn {
+    transition: all 0.3s ease;
+}
+
+.add-projeto-btn:hover {
+    background-color: #0b5ed7; /* azul mais escuro */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
